@@ -1,1 +1,905 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>English CT Variant 1</title>
 
+  <style>
+    *{
+      box-sizing:border-box;
+    }
+
+    body{
+      margin:0;
+      font-family:Arial, sans-serif;
+      background:linear-gradient(135deg,#e3f2fd,#f1f8e9);
+      color:#1b1b1b;
+    }
+
+    .wrapper{
+      max-width:950px;
+      margin:auto;
+      padding:16px;
+    }
+
+    .hero{
+      background:linear-gradient(135deg,#1565c0,#43a047);
+      color:white;
+      padding:28px 20px;
+      border-radius:22px;
+      text-align:center;
+      margin-bottom:18px;
+      box-shadow:0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    .hero h1{
+      margin:0 0 12px;
+      font-size:30px;
+      line-height:1.2;
+    }
+
+    .hero p{
+      margin:8px 0;
+      font-size:16px;
+      line-height:1.5;
+    }
+
+    .badge{
+      display:inline-block;
+      background:white;
+      color:#1565c0;
+      padding:8px 14px;
+      border-radius:999px;
+      font-weight:bold;
+      margin-top:12px;
+      font-size:14px;
+    }
+
+    .card{
+      background:white;
+      padding:22px;
+      border-radius:20px;
+      margin-bottom:18px;
+      box-shadow:0 6px 18px rgba(0,0,0,0.08);
+    }
+
+    .card h2{
+      margin-top:0;
+      color:#1565c0;
+      font-size:22px;
+    }
+
+    .section-title{
+      background:#e3f2fd;
+      border-left:5px solid #1565c0;
+      padding:14px;
+      border-radius:14px;
+      margin-bottom:18px;
+    }
+
+    audio{
+      width:100%;
+      margin:12px 0 18px;
+    }
+
+    .text-box{
+      background:#fafafa;
+      padding:16px;
+      border-radius:16px;
+      line-height:1.6;
+      margin-bottom:18px;
+      border:1px solid #ddd;
+      font-size:15px;
+    }
+
+    .question{
+      background:#f7f7f7;
+      padding:18px;
+      border-radius:16px;
+      margin-bottom:16px;
+      border-left:5px solid #43a047;
+    }
+
+    .question b{
+      display:block;
+      margin-bottom:12px;
+      font-size:16px;
+      line-height:1.5;
+    }
+
+    label{
+      display:block;
+      background:white;
+      padding:12px;
+      border-radius:12px;
+      margin:8px 0;
+      border:1px solid #ddd;
+      cursor:pointer;
+      line-height:1.4;
+    }
+
+    label:hover{
+      background:#e8f5e9;
+    }
+
+    input[type="radio"]{
+      margin-right:8px;
+      transform:scale(1.1);
+    }
+
+    button{
+      width:100%;
+      background:#1565c0;
+      color:white;
+      border:none;
+      padding:16px;
+      border-radius:14px;
+      cursor:pointer;
+      font-size:18px;
+      font-weight:bold;
+      margin-top:10px;
+    }
+
+    button:hover{
+      background:#0d47a1;
+    }
+
+    .result-box{
+      background:#e8f5e9;
+      border:2px solid #43a047;
+      padding:22px;
+      border-radius:20px;
+      text-align:center;
+      margin-bottom:18px;
+    }
+
+    .result-box h2{
+      margin-top:0;
+      color:#2e7d32;
+    }
+
+    .score-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:10px;
+      margin-top:15px;
+    }
+
+    .score-item{
+      background:white;
+      padding:12px;
+      border-radius:14px;
+      font-weight:bold;
+    }
+
+    .correct{
+      color:green;
+      font-weight:bold;
+    }
+
+    .wrong{
+      color:red;
+      font-weight:bold;
+    }
+
+    .explanation{
+      background:#f1f8e9;
+      padding:12px;
+      margin:10px 0 18px;
+      border-radius:12px;
+      line-height:1.5;
+    }
+
+    .contact-box{
+      background:#ffffff;
+      border:2px solid #1565c0;
+      padding:22px;
+      border-radius:20px;
+      text-align:center;
+      margin-bottom:18px;
+      box-shadow:0 6px 18px rgba(0,0,0,0.08);
+    }
+
+    .contact-box h2{
+      color:#1565c0;
+      margin-top:0;
+    }
+
+    .contact-box p{
+      line-height:1.5;
+      font-size:16px;
+    }
+
+    .contact-btn{
+      display:block;
+      text-decoration:none;
+      color:white;
+      padding:14px;
+      border-radius:14px;
+      margin:10px 0;
+      font-weight:bold;
+      font-size:17px;
+    }
+
+    .whatsapp{
+      background:#25D366;
+    }
+
+    .telegram{
+      background:#229ED9;
+    }
+
+    .footer{
+      text-align:center;
+      color:#555;
+      font-size:14px;
+      padding:20px 0;
+    }
+
+    @media(max-width:600px){
+      .wrapper{
+        padding:12px;
+      }
+
+      .hero{
+        padding:24px 16px;
+        border-radius:18px;
+      }
+
+      .hero h1{
+        font-size:24px;
+      }
+
+      .hero p{
+        font-size:15px;
+      }
+
+      .card{
+        padding:16px;
+        border-radius:17px;
+      }
+
+      .question{
+        padding:15px;
+      }
+
+      .question b{
+        font-size:15px;
+      }
+
+      label{
+        font-size:15px;
+        padding:11px;
+      }
+
+      button{
+        font-size:16px;
+        padding:15px;
+      }
+
+      .score-grid{
+        grid-template-columns:1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="wrapper">
+
+  <div class="hero">
+    <h1>English CT Test — Variant 1</h1>
+    <p>Магистратураға дайындалып жүрсіз бе?</p>
+    <p>Listening, Lexico-Grammar және Reading бойынша өз деңгейіңізді тексеріңіз.</p>
+    <span class="badge">50 сұрақ • Нәтиже бірден шығады</span>
+  </div>
+
+  <div class="card">
+    <h2>Нұсқаулық</h2>
+    <p>Бұл тест 3 бөлімнен тұрады:</p>
+    <ul>
+      <li><b>Аудирование / Listening:</b> 1–16 сұрақ</li>
+      <li><b>Лексика-грамматика:</b> 17–34 сұрақ</li>
+      <li><b>Чтение / Reading:</b> 35–50 сұрақ</li>
+    </ul>
+    <p>Барлық сұрақтарға жауап беріп, соңында нәтижені көріңіз.</p>
+  </div>
+
+  <div class="card">
+    <div class="section-title">
+      <h2>Part 1. Аудирование / Listening</h2>
+      <p>Аудионы тыңдап, дұрыс жауапты таңдаңыз.</p>
+    </div>
+
+    <h2>Listening 1</h2>
+    <audio controls controlsList="nodownload">
+      <source src="TEXT%2033%20-%20АУДИО.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+    <div id="listening1"></div>
+
+    <h2>Listening 2</h2>
+    <audio controls controlsList="nodownload">
+      <source src="TEXT%2034%20-%20АУДИО.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+    <div id="listening2"></div>
+  </div>
+
+  <div class="card">
+    <div class="section-title">
+      <h2>Part 2. Lexico-Grammar Test</h2>
+      <p>Дұрыс грамматикалық немесе лексикалық нұсқаны таңдаңыз.</p>
+    </div>
+    <div id="grammar"></div>
+  </div>
+
+  <div class="card">
+    <div class="section-title">
+      <h2>Part 3. Reading</h2>
+      <p>Мәтінді оқып, сұрақтарға жауап беріңіз.</p>
+    </div>
+
+    <h2>Text 1. Halloween</h2>
+    <div class="text-box">
+      <p>Halloween, also referred to as All Hollows' Eve, is a holiday that's celebrated in America on 31 October of each year, regardless of what day of the week this date falls on. Although it is rooted in religion, Halloween today is enjoyed mainly because of its decorations, costumes, candy, treats, and general excitement, and furthermore, it is enjoyed by most everyone.</p>
+
+      <p>Before Halloween, many individuals carve a design into an orange-colored pumpkin, or a solid, durable vegetable. Once a personally satisfying design is carved, a lit candle is typically put inside a pumpkin, thereby making it a Jack-O-Lantern. At night, this design lights up against the darkness.</p>
+
+      <p>Besides carving pumpkins, some celebrate Halloween by putting decorations up. Supernatural figures, including vampires, ghosts, werewolves, zombies, and more, generally account for most of these decorations. Bugs, spiders, cobwebs, gravestones, and anything else that can be considered creepy can also be found on Halloween, in decoration form.</p>
+
+      <p>Only some adults celebrate Halloween, and they generally do so by attending parties. Inversely, the vast majority of children dress in costume and walk from door to door in search of candy — a practice known as trick or treat — on Halloween. After knocking on a door, one says, "Trick or Treat" and a piece of candy is given to him or her.</p>
+    </div>
+    <div id="reading1"></div>
+
+    <h2>Text 2. Lost Love</h2>
+    <div class="text-box">
+      <p>These things happened to me nearly ten years ago. I lived in a city, but the city was hot in summer. I wanted to see the country. I wanted to walk in the woods and see green trees.</p>
+
+      <p>I had a little red car and I had a map, too. I drove all night out into the country. I was happy in my car. We had a very good summer that year. The country was very pretty in the early morning. The sun was hot, and the sky was blue. I heard the birds in the trees.</p>
+
+      <p>And then my car stopped suddenly. “What's wrong?” I thought. “Oh dear, I haven’t got any petrol. Now I’ll have to walk. I'll have to find a town and buy some petrol. But where am I?” I wasn’t near a town. I was lost in the country.</p>
+
+      <p>And then I saw the girl. She walked down the road, with flowers in her hand. She wore a long dress, and her hair was long. It was long and black. She was very pretty. I wanted to speak to her. I got out of the car.</p>
+
+      <p>“Hello,” I said. “I'm lost. Where am I?” She looked afraid, so I spoke quietly. “I haven't got any petrol,” I said. “Where can I find some?” Her blue eyes looked at me, and she smiled. “She's a very pretty girl!” I thought. “I do not know,” she said. “Come with me to the village. Perhaps we can help you.”</p>
+    </div>
+    <div id="reading2"></div>
+  </div>
+
+  <div class="card">
+    <button onclick="checkAnswers()">Нәтижені көру / Show Results</button>
+  </div>
+
+  <div id="results"></div>
+
+  <div class="footer">
+    © English CT preparation test
+  </div>
+
+</div>
+
+<script>
+const questions = [
+  {
+    section:"Listening",
+    part:"listening1",
+    q:"1. He made maps ____.",
+    options:["A) because they help the loggers","B) to help campers","C) to show where Canada’s biggest trees are located","D) because he works for the government"],
+    answer:2,
+    explanation:"Correct answer: C."
+  },
+  {
+    section:"Listening",
+    part:"listening1",
+    q:"2. The loggers wanted ____.",
+    options:["A) to cut it down","B) to save the tree","C) to take pictures of the tree","D) to measure the tree to find out how tall it was"],
+    answer:0,
+    explanation:"Correct answer: A."
+  },
+  {
+    section:"Listening",
+    part:"listening1",
+    q:"3. Randy made a path to the tallest tree in Canada because ____.",
+    options:["A) he needed the path to get home","B) he wanted more people to see it","C) he could visit the tree more easily","D) he wanted to help the loggers get to the tree"],
+    answer:1,
+    explanation:"Correct answer: B."
+  },
+  {
+    section:"Listening",
+    part:"listening1",
+    q:"4. The phrase “filled with awe” means ____.",
+    options:["A) to be not interested","B) to be curious","C) to be amazed","D) to want money"],
+    answer:2,
+    explanation:"Correct answer: C. Filled with awe = amazed."
+  },
+  {
+    section:"Listening",
+    part:"listening1",
+    q:"5. What happened to the forest where Randy found Canada's tallest tree?",
+    options:["A) The loggers might cut it down in the future","B) No one knows. It is a mystery","C) The loggers cut it down","D) It became a park"],
+    answer:3,
+    explanation:"Correct answer: D."
+  },
+  {
+    section:"Listening",
+    part:"listening1",
+    q:"6. The man’s name is ____.",
+    options:["A) Harry","B) Randy","C) Rorry","D) Harret"],
+    answer:1,
+    explanation:"Correct answer: B."
+  },
+  {
+    section:"Listening",
+    part:"listening1",
+    q:"7. The tall tree on Vancouver Island was said to be ____ feet tall.",
+    options:["A) 340","B) 3014","C) 314","D) 3040"],
+    answer:2,
+    explanation:"Correct answer: C."
+  },
+  {
+    section:"Listening",
+    part:"listening1",
+    q:"8. Randy liked ____.",
+    options:["A) to cut trees","B) to buy","C) to hunt trees","D) to take pictures of the tree"],
+    answer:2,
+    explanation:"Correct answer: C."
+  },
+
+  {
+    section:"Listening",
+    part:"listening2",
+    q:"9. The article gives the advice to help recently divorced Portuguese men to do ____.",
+    options:["A) housework","B) sport","C) morning exercises","D) washing-up"],
+    answer:0,
+    explanation:"Correct answer: A."
+  },
+  {
+    section:"Listening",
+    part:"listening2",
+    q:"10. On the website they can find out how to clean a stain from a white ____.",
+    options:["A) skirt","B) shirt","C) trousers","D) cap"],
+    answer:1,
+    explanation:"Correct answer: B."
+  },
+  {
+    section:"Listening",
+    part:"listening2",
+    q:"11. Thousands of men have to iron their ____.",
+    options:["A) shirt","B) trousers","C) clothes","D) wives"],
+    answer:2,
+    explanation:"Correct answer: C."
+  },
+  {
+    section:"Listening",
+    part:"listening2",
+    q:"12. According to the text you should ____ your bed sheets once a week.",
+    options:["A) get","B) change","C) buy","D) wash"],
+    answer:1,
+    explanation:"Correct answer: B."
+  },
+  {
+    section:"Listening",
+    part:"listening2",
+    q:"13. The article is telling about ____.",
+    options:["A) divorced men","B) divorced women","C) children","D) European Union"],
+    answer:0,
+    explanation:"Correct answer: A."
+  },
+  {
+    section:"Listening",
+    part:"listening2",
+    q:"14. The website is called ____.",
+    options:["A) Portugal","B) Vida-On","C) Oliveira","D) European Union"],
+    answer:1,
+    explanation:"Correct answer: B."
+  },
+  {
+    section:"Listening",
+    part:"listening2",
+    q:"15. Besides housework tips the site helps to ____.",
+    options:["A) find a partner","B) get a job","C) make bed","D) start to date again"],
+    answer:3,
+    explanation:"Correct answer: D."
+  },
+  {
+    section:"Listening",
+    part:"listening2",
+    q:"16. According to the text men in ____ do less work around the house than in any other European Union country.",
+    options:["A) Europe","B) Germany","C) Portugal","D) Kazakhstan"],
+    answer:2,
+    explanation:"Correct answer: C."
+  },
+
+  {
+    section:"Grammar",
+    part:"grammar",
+    q:"17. I saw him ____ down the street.",
+    options:["A) walked","B) was walk","C) was walking","D) walking"],
+    answer:3,
+    explanation:"Correct answer: D. See someone doing something."
+  },
+  {
+    section:"Grammar",
+    part:"grammar",
+    q:"18. ____ by all his friends, he decided to become a monk.",
+    options:["A) Reject","B) Is rejecting","C) Rejected","D) To reject"],
+    answer:2,
+    explanation:"Correct answer: C. Past participle is used in this structure."
+  },
+  {
+    section:"Grammar",
+    part:"grammar",
+    q:"19. ____ Panama Canal joins ____ Atlantic Ocean and ____ Pacific Ocean.",
+    options:["A) - / - / the","B) - / - / -","C) The / the / the","D) - / the / the"],
+    answer:2,
+    explanation:"Correct answer: C. The Panama Canal, the Atlantic Ocean, the Pacific Ocean."
+  },
+  {
+    section:"Grammar",
+    part:"grammar",
+    q:"20. They ____ the film yet.",
+    options:["A) hasn't seen","B) doesn't study","C) didn't seen","D) haven't seen"],
+    answer:3,
+    explanation:"Correct answer: D. Present Perfect: have not seen."
+  },
+  {
+    section:"Grammar",
+    part:"grammar",
+    q:"21. I ____ when my friend called.",
+    options:["A) slept","B) had slept","C) am sleeping","D) was sleeping"],
+    answer:3,
+    explanation:"Correct answer: D. Past Continuous for an action in progress."
+  },
+  {
+    section:"Grammar",
+    part:"grammar",
+    q:"22. I think your glasses are in ____ kitchen.",
+    options:["A) the","B) -","C) an","D) a"],
+    answer:0,
+    explanation:"Correct answer: A. In the kitchen."
+  },
+  {
+    section:"Grammar",
+    part:"grammar",
+    q:"23. This house is quite old. It ____ over 100 years ago.",
+    options:["A) is being built","B) built","C) was building","D) was built"],
+    answer:3,
+    explanation:"Correct answer: D. Passive voice in the past."
+  },
+  {
+    section:"Grammar",
+    part:"grammar",
+    q:"24. I ____ agree with you.",
+    options:["A) very","B) fluently","C) briefly","D) totally"],
+    answer:3,
+    explanation:"Correct answer: D. Totally agree."
+  },
+  {
+    section:"Grammar",
+    part:"grammar",
+    q:"25. ____ wanted to go skiing over the winter break.",
+    options:["A) them","B) We","C) Me","D) Us"],
+    answer:1,
+    explanation:"Correct answer: B. Subject pronoun: We."
+  },
+  {
+    section:"Grammar",
+    part:"grammar",
+    q:"26. She ____ fell off the edge of the platform because she went too ____ to it.",
+    options:["A) nearly, nearly","B) near, near","C) nearly, near","D) near, nearly"],
+    answer:2,
+    explanation:"Correct answer: C. Nearly = almost, near = close."
+  },
+  {
+    section:"Grammar",
+    part:"grammar",
+    q:"27. You can get to ____ Heathrow Airport by underground.",
+    options:["A) the","B) a","C) an","D) -"],
+    answer:3,
+    explanation:"Correct answer: D. Heathrow Airport is used without an article."
+  },
+  {
+    section:"Grammar",
+    part:"grammar",
+    q:"28. Complete the sentence. Let's go out. It ____ now.",
+    options:["A) aren't raining","B) doesn't rain","C) don't rain","D) isn't raining"],
+    answer:3,
+    explanation:"Correct answer: D. Present Continuous negative."
+  },
+  {
+    section:"Grammar",
+    part:"grammar",
+    q:"29. Kate was listening to ____.",
+    options:["A) musics","B) music","C) a music","D) music’s"],
+    answer:1,
+    explanation:"Correct answer: B. Music is uncountable."
+  },
+  {
+    section:"Grammar",
+    part:"grammar",
+    q:"30. I am tired. I ____ all night.",
+    options:["A) ‘ve been working","B) has worked","C) ‘ve just worked","D) has been working"],
+    answer:0,
+    explanation:"Correct answer: A. I have been working."
+  },
+  {
+    section:"Grammar",
+    part:"grammar",
+    q:"31. He’d love ____ on his own, but he simply can't afford ____ his own flat.",
+    options:["A) live / to be having","B) to live / to have","C) living / having","D) having lived / have"],
+    answer:1,
+    explanation:"Correct answer: B. Would love to live, afford to have."
+  },
+  {
+    section:"Grammar",
+    part:"grammar",
+    q:"32. A: He always helps his mom with chores. B: ____",
+    options:["A) What good boy he is!","B) What a good boy!","C) What is a good boy!","D) What good a boy!"],
+    answer:1,
+    explanation:"Correct answer: B. What a good boy!"
+  },
+  {
+    section:"Grammar",
+    part:"grammar",
+    q:"33. Cheese ____ from milk.",
+    options:["A) is produced","B) produces","C) are being produced","D) are produced"],
+    answer:0,
+    explanation:"Correct answer: A. Cheese is singular, passive voice."
+  },
+  {
+    section:"Grammar",
+    part:"grammar",
+    q:"34. His wish that everybody ____ in the work was reasonable.",
+    options:["A) took part","B) take part","C) shall take part","D) should take part"],
+    answer:3,
+    explanation:"Correct answer: D. Should take part."
+  },
+
+  {
+    section:"Reading",
+    part:"reading1",
+    q:"35. When does Halloween take place?",
+    options:["A) 14 February","B) 25 December","C) 31 October","D) Eight weeks before Christmas"],
+    answer:2,
+    explanation:"Correct answer: C. The text says Halloween is celebrated on 31 October."
+  },
+  {
+    section:"Reading",
+    part:"reading1",
+    q:"36. What day of the week does Halloween fall on?",
+    options:["A) Halloween is always on Saturday","B) Halloween is always on Friday","C) Halloween is always on Monday","D) Halloween's day of the week varies by year"],
+    answer:3,
+    explanation:"Correct answer: D. The text says it is celebrated regardless of what day of the week the date falls on."
+  },
+  {
+    section:"Reading",
+    part:"reading1",
+    q:"37. How do most children celebrate Halloween?",
+    options:["A) By dressing in costume and trick-or-treating","B) By studying schoolwork","C) By hanging ornaments on a Christmas tree","D) By producing candies"],
+    answer:0,
+    explanation:"Correct answer: A. Children dress in costume and go trick-or-treating."
+  },
+  {
+    section:"Reading",
+    part:"reading1",
+    q:"38. Halloween is celebrated in America on ____ of each year.",
+    options:["A) 31 September","B) 11 October","C) 31 October","D) 21 September"],
+    answer:2,
+    explanation:"Correct answer: C. The date is 31 October."
+  },
+  {
+    section:"Reading",
+    part:"reading1",
+    q:"39. Before Halloween, many individuals carve a design into an orange-colored ____.",
+    options:["A) apple","B) cabbage","C) tomato","D) pumpkin"],
+    answer:3,
+    explanation:"Correct answer: D. The text mentions an orange-colored pumpkin."
+  },
+  {
+    section:"Reading",
+    part:"reading1",
+    q:"40. One can expect to see all of the following types of decorations on Halloween except:",
+    options:["A) Spiders and other bugs","B) Snowflakes and ribbons","C) Gravestones and zombies","D) Vampires"],
+    answer:1,
+    explanation:"Correct answer: B. Snowflakes and ribbons are not mentioned as Halloween decorations."
+  },
+  {
+    section:"Reading",
+    part:"reading1",
+    q:"41. Some adults celebrate Halloween in which of the following ways?",
+    options:["A) Trick-or-treating","B) Going to bed early","C) Attending Halloween parties","D) Buying Christmas gifts"],
+    answer:2,
+    explanation:"Correct answer: C. Adults generally celebrate by attending parties."
+  },
+  {
+    section:"Reading",
+    part:"reading1",
+    q:"42. Before Halloween, many individuals carve a design into an ____-colored pumpkin.",
+    options:["A) red","B) black","C) orange","D) blue"],
+    answer:2,
+    explanation:"Correct answer: C. Orange-colored pumpkin."
+  },
+
+  {
+    section:"Reading",
+    part:"reading2",
+    q:"43. Suddenly the man saw the ____ who walked down the road, with flowers in her hand.",
+    options:["A) woman","B) car","C) girl","D) bird"],
+    answer:2,
+    explanation:"Correct answer: C. The text says: And then I saw the girl."
+  },
+  {
+    section:"Reading",
+    part:"reading2",
+    q:"44. The girl was very ____.",
+    options:["A) angry","B) nice","C) dumb","D) better"],
+    answer:1,
+    explanation:"Correct answer: B. The text says she was very pretty."
+  },
+  {
+    section:"Reading",
+    part:"reading2",
+    q:"45. The city was hot in summer so he ____ to see the country.",
+    options:["A) waited","B) dislike","C) hated","D) had a desire"],
+    answer:3,
+    explanation:"Correct answer: D. He wanted to see the country."
+  },
+  {
+    section:"Reading",
+    part:"reading2",
+    q:"46. And then his ____ stopped suddenly.",
+    options:["A) car","B) legs","C) shoes","D) bike"],
+    answer:0,
+    explanation:"Correct answer: A. The text says his car stopped suddenly."
+  },
+  {
+    section:"Reading",
+    part:"reading2",
+    q:"47. When he asked for some ____, she smiled and said him to come with her to the village.",
+    options:["A) water","B) advice","C) flower","D) petrol"],
+    answer:3,
+    explanation:"Correct answer: D. He said he had not got any petrol."
+  },
+  {
+    section:"Reading",
+    part:"reading2",
+    q:"48. The city was hot in summer so he wanted to see the ____.",
+    options:["A) town","B) country","C) city","D) the girl"],
+    answer:1,
+    explanation:"Correct answer: B. He wanted to see the country."
+  },
+  {
+    section:"Reading",
+    part:"reading2",
+    q:"49. The sun was ____, and the sky was blue.",
+    options:["A) hot","B) cool","C) warm","D) cold"],
+    answer:0,
+    explanation:"Correct answer: A. The text says the sun was hot."
+  },
+  {
+    section:"Reading",
+    part:"reading2",
+    q:"50. We had a very good summer that year and the country was very pretty in the ____.",
+    options:["A) late evening","B) midnight","C) early morning","D) all day"],
+    answer:2,
+    explanation:"Correct answer: C. The country was very pretty in the early morning."
+  }
+];
+
+function renderQuestions(){
+  questions.forEach((item, index) => {
+    const container = document.getElementById(item.part);
+
+    let html = `<div class="question">
+      <b>${item.q}</b>`;
+
+    item.options.forEach((option, optionIndex) => {
+      html += `
+        <label>
+          <input type="radio" name="q${index}" value="${optionIndex}">
+          ${option}
+        </label>
+      `;
+    });
+
+    html += `</div>`;
+    container.innerHTML += html;
+  });
+}
+
+function checkAnswers(){
+  let totalScore = 0;
+  let listeningScore = 0;
+  let grammarScore = 0;
+  let readingScore = 0;
+  let resultHTML = "";
+
+  questions.forEach((item, index) => {
+    const selected = document.querySelector(`input[name="q${index}"]:checked`);
+    const userAnswer = selected ? Number(selected.value) : null;
+
+    const isCorrect = userAnswer === item.answer;
+
+    if(isCorrect){
+      totalScore++;
+
+      if(item.section === "Listening") listeningScore++;
+      if(item.section === "Grammar") grammarScore++;
+      if(item.section === "Reading") readingScore++;
+
+      resultHTML += `<p class="correct">✔ ${item.q}</p>`;
+    } else {
+      resultHTML += `<p class="wrong">✘ ${item.q}</p>`;
+    }
+
+    resultHTML += `
+      <div class="explanation">
+        <b>Correct answer:</b> ${item.options[item.answer]}<br>
+        <b>Your answer:</b> ${userAnswer !== null ? item.options[userAnswer] : "No answer"}<br>
+        <b>Explanation:</b> ${item.explanation}
+      </div>
+    `;
+  });
+
+  let level = "";
+  let messageKaz = "";
+  let messageRus = "";
+
+  if(totalScore <= 20){
+    level = "Бастапқы деңгей / Начальный уровень";
+    messageKaz = "Сізге әлі көбірек дайындық керек.";
+    messageRus = "Вам нужно ещё больше подготовиться.";
+  } else if(totalScore <= 38){
+    level = "Орташа деңгей / Средний уровень";
+    messageKaz = "Негізгі түсінік бар, бірақ қосымша практика қажет.";
+    messageRus = "Базовое понимание есть, но нужна дополнительная практика.";
+  } else {
+    level = "Жақсы дайындық / Хорошая готовность";
+    messageKaz = "Нәтижеңіз жақсы. Енді тұрақты қайталау маңызды.";
+    messageRus = "Результат хороший. Теперь важно регулярно повторять.";
+  }
+
+  const finalBlock = `
+    <div class="result-box">
+      <h2>Нәтижеңіз: ${totalScore}/${questions.length}</h2>
+      <h2>${level}</h2>
+      <p>${messageKaz}</p>
+      <p>${messageRus}</p>
+
+      <div class="score-grid">
+        <div class="score-item">Listening: ${listeningScore}/16</div>
+        <div class="score-item">Grammar: ${grammarScore}/18</div>
+        <div class="score-item">Reading: ${readingScore}/16</div>
+      </div>
+    </div>
+
+    <div class="contact-box">
+      <h2>Толық дайындық керек пе?</h2>
+      <p>Ағылшын КТ бойынша қосымша тесттер мен дайындық туралы білу үшін WhatsApp немесе Telegram-ға жазыңыз.</p>
+      <p>Для дополнительных тестов и подготовки к английскому КТ напишите в WhatsApp или Telegram.</p>
+
+      <a class="contact-btn whatsapp" href="https://wa.me/77007976745?text=Сәлеметсіз%20бе!%20Ағылшын%20КТ%20бойынша%20дайындық%20туралы%20білгім%20келеді.%0AЗдравствуйте!%20Хочу%20узнать%20о%20подготовке%20к%20английскому%20КТ." target="_blank">
+        WhatsApp-қа жазу
+      </a>
+
+      <a class="contact-btn telegram" href="https://t.me/elnazm_ln" target="_blank">
+        Telegram-ға жазу
+      </a>
+    </div>
+  `;
+
+  document.getElementById("results").innerHTML = finalBlock + resultHTML;
+
+  document.getElementById("results").scrollIntoView({
+    behavior:"smooth"
+  });
+}
+
+renderQuestions();
+</script>
+
+</body>
+</html>
